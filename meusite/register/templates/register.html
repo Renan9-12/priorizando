@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Cadastro</title>
+    <style>
+    body {
+        background-color: #000;
+        color: #f1c40f; /* amarelo */
+        font-family: Times New Roman;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+    }
+
+    h1 {
+        color: #f1c40f;
+        margin-bottom: 20px;
+    }
+
+    form {
+        background-color: #111;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(241, 196, 15, 0.3);
+        width: 300px;
+        text-align: left;
+    }
+
+    label {
+        font-weight: bold;
+        color: #f1c40f;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #f1c40f;
+        border-radius: 5px;
+        background-color: #000;
+        color: #f1c40f;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #ffd700;
+        box-shadow: 0 0 5px #f1c40f;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #f1c40f;
+        border: none;
+        border-radius: 5px;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background-color: #ffd700;
+    }
+
+    p {
+        margin-top: 15px;
+    }
+
+    a {
+        color: #f1c40f;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+</head>
+<body>
+<h1>Criar conta</h1>
+
+    
+
+    <form method="post" action="/login/">{% csrf_token %}
+
+        <label for="id_username">Nome de usuário:</label><br>
+        <input id="id_username" type="text" name="nome_inserido" required><br><br>
+
+        <label for="id_email">Email:</label><br>
+        <input id="id_email" type="email" name="email_inserido" required><br><br>
+
+        <label for="id_password1">Senha:</label><br>
+        <input id="id_password1" type="password" name="senha_inserida" required><br><br>
+
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <p>Já tem conta? <a href="/login/">Entrar</a></p>
+
+</body>
+</html>
+>
+</html>
+>
+</html>
