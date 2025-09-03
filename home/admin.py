@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import Tarefas
 
-# Register your models here.
+# home admin 
+
+admin.site.register(Tarefas)
+
+

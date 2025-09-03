@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Gerenciar Tarefas</title>
+</head>
+<body>
+    <h1>Lista de Tarefas</h1>
+
+    <!-- 1. Formulário para adicionar nova tarefa -->
+    <h2>Adicionar Tarefa</h2>
+    <form method="post" action="/home/">
+        {% csrf_token %}
+
+        <label for="id_titulo">Título:</label><br>
+        <input 
+            type="text" 
+            id="id_titulo" 
+            name="titulo" 
+            maxlength="100" 
+            required
+        ><br><br>
+
+        <label for="id_descricao">Descrição:</label><br>
+        <textarea 
+            id="id_descricao" 
+            name="descricao" 
+            maxlength="2000" 
+            rows="4" 
+            cols="40"
+        ></textarea><br><br>
+
+        <label for="id_tipo">Tipo:</label><br>
+        <select id="id_tipo" name="tipo">
+            <option value="pessoal" selected>Pessoal</option>
+            <option value="estudo">Estudo</option>
+            <option value="trabalho">Trabalho</option>
+        </select><br><br>
+
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <hr>
+
+    <!-- 2. Listagem de tarefas -->
+    <h2>Tarefas Cadastradas</h2>
+    <ul>
+        {% for tarefa in tarefas %}
+            <li>
+                {% if tarefa.concluida %}
+                    <s>{{ tarefa.titulo }}</s>
+                {% else %}
+                    {{ tarefa.titulo }}
+                {% endif %}
+                <br>
+                {{ tarefa.descricao }}<br>
+                Tipo: {{ tarefa.tipo }}<br>
+                Criada em: {{ tarefa.prazo }}<br>
+                Última atualização: {{ tarefa.atualizar }}<br><br>
+            </li>
+            <br>
+        {% empty %}
+            <li>Nenhuma tarefa cadastrada.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
