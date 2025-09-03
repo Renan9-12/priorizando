@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Editar Tarefa</title>
+</head>
+<body>
+    <h2>Editar Tarefa</h2>
+
+    <!-- Formulário de edição -->
+    <form method="post" action="">
+        {% csrf_token %}
+
+        <label for="id_titulo">Título:</label><br>
+        <input 
+            type="text" 
+            id="id_titulo" 
+            name="titulo" 
+            value="{{ tarefa.titulo }}" 
+            maxlength="100" 
+            required
+        ><br><br>
+
+        <label for="id_descricao">Descrição:</label><br>
+        <textarea 
+            id="id_descricao" 
+            name="descricao" 
+            maxlength="2000" 
+            rows="4" 
+            cols="40"
+        >{{ tarefa.descricao }}</textarea><br><br>
+
+        <label for="id_tipo">Tipo:</label><br>
+        <select id="id_tipo" name="tipo">
+            <option value="pessoal" {% if tarefa.tipo == "pessoal" %}selected{% endif %}>Pessoal</option>
+            <option value="estudo" {% if tarefa.tipo == "estudo" %}selected{% endif %}>Estudo</option>
+            <option value="trabalho" {% if tarefa.tipo == "trabalho" %}selected{% endif %}>Trabalho</option>
+        </select><br><br>
+
+        <button type="submit">Salvar Alterações</button>
+
+
+
+         <!-- Botão de marcar como concluída ou continuar -->
+        {% if not tarefa.concluida %}
+            <button type="submit" name="concluida" value="1">Concluir Tarefa</button>
+        {% else %}
+            <button type="submit" name="pendente" value="1">Continuar Tarefa</button>
+        {% endif %}
+
+
+        <!-- Botão de excluir  -->
+        <button type="submit" name="excluir" value="1" style="color:red;"> Excluir Tarefa</button>
+    </form>
+
+    <br>
+
+    <!-- Botão voltar -->
+    <form method="get" action="{% url 'home_page' %}">
+        <button type="submit">Voltar para a Lista</button>
+    </form>
+
+</body>
+</html>

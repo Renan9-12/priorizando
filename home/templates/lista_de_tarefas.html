@@ -3,18 +3,38 @@
 <head>
   <meta charset="utf-8">
   <title>Lista de Tarefas</title>
+  <style>
+    .concluida {
+      text-decoration: line-through;
+      color: gray;
+    }
+  </style>
 </head>
 <body>
   <h1>Minhas Tarefas</h1>
 
   {% if tarefas %}
     <ul>
+
+
       {% for t in tarefas %}
-        <li>
+        <li class="{% if t.concluida %}concluida{% endif %}">
           <strong>{{ t.titulo }}</strong><br>
           {{ t.descricao }}<br>
           Tipo: {{ t.tipo }}<br>
-          Criado em: {{ t.prazo|date:"d/m/Y H:i" }}
+          Criado em: {{ t.data_criado|date:"d/m/Y H:i" }}<br>
+          Última atualização: {{ t.atualizar|date:"d/m/Y H:i" }}<br>
+          {% if t.concluida %}
+              <span style="color:green;">Concluída</span>
+          {% else %}
+              <span style="color:red;">Pendente</span>
+          {% endif %} <br>
+
+          <!-- Editar -->
+          <form method="get" action="{% url 'editar_tarefa' t.id %}" style="display:inline;">
+            <button type="submit">Editar</button>
+          </form>
+
         </li>
         <br>
       {% endfor %}
@@ -23,9 +43,12 @@
     <p>Nenhuma tarefa cadastrada.</p>
   {% endif %}
 
+  <br>
   <!-- Botão que leva para a página de adicionar -->
-  <form action="/home/adicionar_tarefa/" method="get">
+  <form action="{% url 'add_tarefa' %}" method="get">
     <button type="submit">Adicionar Tarefa</button>
   </form>
+
+  
 </body>
 </html>

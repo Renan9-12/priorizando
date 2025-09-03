@@ -86,7 +86,7 @@
 <body>
     <h1>Entrar</h1>
 
-    <form method="post" action="/home/">
+    <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">
 

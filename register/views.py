@@ -9,7 +9,7 @@ def registrar(request):
         return render(request, "register.html")
     
 
-    # Recebe as informações de registro e verifica se já existe usuário com o mesmo já existe usuário com o mesmo username.
+    # Recebe as informações de registro e verifica se já existe usuário com o mesmo username.
     else:
         username = request.POST.get("nome_inserido")
         email = request.POST.get("email_inserido")
