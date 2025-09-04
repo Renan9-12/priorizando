@@ -1,14 +1,13 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <title>Lista de Tarefas</title>
-  <style>
-    .concluida {
-      text-decoration: line-through;
-      color: gray;
-    }
-  </style>
+
+  <link rel="stylesheet" href="{% static 'lista_de_tarefas.css' %}">
+
 </head>
 <body>
   <h1>Minhas Tarefas</h1>
@@ -16,7 +15,7 @@
   {% if tarefas %}
     <ul>
 
-
+      <!-- Passa por cada tarefa e dá suas informações -->
       {% for t in tarefas %}
         <li class="{% if t.concluida %}concluida{% endif %}">
           <strong>{{ t.titulo }}</strong><br>
@@ -25,13 +24,13 @@
           Criado em: {{ t.data_criado|date:"d/m/Y H:i" }}<br>
           Última atualização: {{ t.atualizar|date:"d/m/Y H:i" }}<br>
           {% if t.concluida %}
-              <span style="color:green;">Concluída</span>
+              <span>Concluída</span>
           {% else %}
-              <span style="color:red;">Pendente</span>
+              <span>Pendente</span>
           {% endif %} <br>
 
           <!-- Editar -->
-          <form method="get" action="{% url 'editar_tarefa' t.id %}" style="display:inline;">
+          <form method="get" action="{% url 'editar_tarefa' t.id %}">
             <button type="submit">Editar</button>
           </form>
 
@@ -48,6 +47,14 @@
   <form action="{% url 'add_tarefa' %}" method="get">
     <button type="submit">Adicionar Tarefa</button>
   </form>
+
+  <br>
+  <!-- Botão de logout -->
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Sair</button>
+  </form>
+
 
   
 </body>

@@ -40,4 +40,4 @@ def registrar(request):
 
 
 # Me socorre nessa função, Deus!!
-# Atualização: Deu certo, Obrigado meu Deus!!!
+# Atualização: Deu certo, obrigado meu Deus!!!

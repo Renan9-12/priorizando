@@ -26,7 +26,4 @@ def logar(request):
 
 
 
-
-
-
 #Abraço pra galera da RZ <3

@@ -1,9 +1,15 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="utf-8">
     <title>Editar Tarefa</title>
+
+    <link rel="stylesheet" href="{% static 'editar_tarefa.css' %}">
+
 </head>
+ 
 <body>
     <h2>Editar Tarefa</h2>
 
@@ -50,7 +56,7 @@
 
 
         <!-- Botão de excluir  -->
-        <button type="submit" name="excluir" value="1" style="color:red;"> Excluir Tarefa</button>
+        <button type="submit" name="excluir" value="1"  > Excluir Tarefa</button>
     </form>
 
     <br>

@@ -9,3 +9,4 @@ def inicialpage(request):
     return render(request, 'inicio.html', {})
 
 
+# Tudo começa aqui
