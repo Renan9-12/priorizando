@@ -30,6 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['priorizando.onrender.com']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://priorizando.onrender.com',
+]
 
 # Application definition
 
