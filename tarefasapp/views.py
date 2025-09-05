@@ -10,12 +10,3 @@ def inicialpage(request):
 
 
 # Tudo começa aqui
-
-from django.http import HttpResponse
-from django.contrib.auth.models import User
-
-def criar_superuser(request):
-    if not User.objects.filter(username="admin").exists():
-        User.objects.create_superuser("admin", "pablorenan1946@gmail.com", "pablo1234renan")
-        return HttpResponse("Superuser criado!")
-    return HttpResponse("Superuser já existe!")
